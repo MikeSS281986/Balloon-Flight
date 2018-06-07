@@ -1,0 +1,97 @@
+<html>
+
+  <head>
+    <title>Balloon Pop</title>
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+  </head>
+  <style>
+    body {
+      margin: 0 auto;
+      background-color: #a8def4;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translatey(0px);
+      }
+      50% {
+        transform: translatey(-20px);
+      }
+      100% {
+        transform: translatey(0px);
+      }
+    }
+
+    @keyframes inflate {
+      50% {
+        transform: scale(3, 3);
+      }
+      100% {
+        bottom: 3000px;
+      }
+    }
+
+    #balloon-container {
+      width: 200px;
+      height: 200px;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      margin: auto;
+      transform: translatey(0px);
+    }
+
+    #balloon {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: linear-gradient(180deg, red, #ebf6fa);
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      margin: auto;
+    }
+
+    .floating {
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .inflation {
+      animation: inflate 10s ease-in-out forwards;
+    }
+
+    h1 {
+      position: fixed;
+      bottom: 120px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+    }
+
+  </style>
+
+  <body>
+    <div id="balloon-container" class="floating">
+      <div id="balloon"></div>
+    </div>
+    <h1 id="message">
+      Please don't touch my balloon
+    </h1>
+  </body>
+  <script>
+    var balloon = document.getElementById("balloon-container").addEventListener("click", inflate);
+
+    function inflate() {
+      document.getElementById("message").innerHTML = "NO!!!"
+      this.classList.remove("floating");
+      this.classList.add("inflation");
+    }
+
+  </script>
+
+</html>
